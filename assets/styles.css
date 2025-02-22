@@ -1,0 +1,259 @@
+:root{
+    --bg-color-dark: hsl(217, 19%, 35%);
+    --bg-color-blue: hsl(214, 17%, 51%);
+    --bg-color-grayish: hsl(212, 23%, 69%);
+    --bg-color-light: hsl(210, 46%, 95%);
+
+    --text-color-dark: hsl(217, 19%, 35%);
+    --text-color-blue: hsl(214, 17%, 51%);
+    --text-color-grayish: hsl(212, 23%, 69%);
+    --fz-size: 13px;
+    --ft-family: 'Manrope', sans-serif;
+}
+
+
+*{
+    box-sizing: border-box;
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: var(--bg-color-light);
+    font-family: var(--ft-family);
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+            0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-radius: 10px;
+}
+
+.img{
+    width: 300px;
+    height: 300px;
+}
+
+.card__content{
+    padding: 30px;
+    width: 400px;
+    height: 300px;  
+    background-color: white;
+    position: relative;
+}
+
+.card__content h2{
+    color: var(--text-color-dark);
+    font-size: 20px;
+}
+
+.card__content p{
+    color: var(--text-color-blue);
+    font-size: 12px;
+    line-height: 1.6;
+    font-weight: normal;
+}
+
+.card__author{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+}
+
+.card__author img{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.card__info{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card__details{
+    display: flex;
+    flex-direction: column;
+}
+
+.card__name{
+    font-size: 12px;
+    color: var(--text-color-dark);
+    font-weight: bold;
+}
+
+.card__date{
+    font-size: 12px;
+    color: var(--text-color-grayish);
+    font-weight: normal;
+}
+
+.card__btn{
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-color-light);
+    position: relative;
+    z-index: 99;
+    transition: background-color 0.3s ease;
+}
+
+.card__btn img{
+    background-color: transparent;
+    width: 30px;
+    height: 15px;
+    object-fit: contain;
+    transition: filter 0.3s ease;
+}
+
+.card__btn:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.card__btn:hover{
+    background-color: var(--bg-color-blue);
+}
+
+
+.card__share{
+    position: absolute;
+    width: 220px;
+    height: 55px;
+    background-color: var(--bg-color-dark);
+    bottom: 100px;
+    right: 0;
+    left: 240px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 98;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+.card__share.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.card__share span{
+    color: var(--text-color-grayish);
+    font-size: 12px;
+}
+
+.card__share button{
+    background-color: transparent;
+    border: none;
+}
+
+.card__share button:hover{
+    user-select: none;
+    cursor: pointer;
+}
+
+.share__arrow{
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 45%;
+    bottom: 0px;
+    transform: translateX(-50%);
+}
+
+
+.share__arrow::before{
+    content: "";
+    position: absolute;
+    border-width: 10px 10px;
+    border-style: solid;
+    border-color: var(--bg-color-dark) transparent transparent transparent;
+}
+
+
+@media (max-width: 360px) {
+    body{
+        width: 100%;
+        margin-left: 15px;
+    }
+    
+    .card{
+        width: 90%;
+    }
+}
+
+@media (max-width: 344px) {
+    body{
+        width: 100%;
+        margin-left: 25px;
+    }
+    
+    .card{
+        width: 90%;
+    }
+}
+
+@media (max-width: 840px) {
+    .card{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .img{
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .card__content p{
+        color: var(--text-color-blue);
+        font-size: 14px;
+        line-height: 1.3;
+        font-weight: normal;
+    }
+
+    .card__share{
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: flex-start;
+        gap: 20px;
+        padding: 0px 40px;
+        left: 0;
+        bottom: 0;
+        border-radius: 0px 0px 10px 10px;
+    }
+
+    .card__share span{
+        font-size: 14px;
+    }
+
+    .share__arrow{
+        display: none
+    }
+}
